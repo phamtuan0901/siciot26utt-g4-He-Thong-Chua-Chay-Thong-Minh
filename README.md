@@ -16,31 +16,35 @@ Các module chính của hệ thống:
 
 ---
 
-## 2. Vấn đề và Bối cảnh 
+## 2. Vấn đề và Bối cảnh
 
-* Bối cảnh chung: Thực trạng cháy nổ tại các khu nhà trọ, nhà ở riêng lẻ kết hợp kinh doanh đang diễn biến vô cùng phức tạp, phần lớn là hệ quả của yếu tố "làng lên phố" và những bất cập trong quy hoạch nhà ở vừa ở vừa kinh doanh tại các khu dân cư đông đúc.
+* Bối cảnh chung: Các văn phòng làm việc hiện đại, đặc biệt là các công ty công nghệ, tài chính, truyền thông, có mật độ thiết bị điện tử cực kỳ dày đặc (máy tính để bàn, laptop, ...). Đặc thù của các thiết bị này là phải vận hành liên tục 24/7. Điều này tỏa ra lượng nhiệt lớn, dây cáp chằng chịt, dẫn đến rủi ro quá tải hoặc chập mạch nguồn điện luôn ở mức cao.
 
-* Số liệu thực tế:
+* Số liệu thực tế: Theo các báo cáo về an toàn phòng cháy chữa cháy, sự cố về hệ thống và thiết bị điện (chập mạch, quá tải) luôn chiếm tỷ lệ cao nhất, thường lên tới 60-70% nguyên nhân gây ra các vụ cháy nổ tại các cơ sở kinh doanh, tòa nhà văn phòng. Thiệt hại trong các vụ cháy này không chỉ là phần cứng mà nguy hiểm hơn là sự mất mát về "dữ liệu vĩnh viễn" và thời gian doanh nghiệp bị đình trệ hoạt động.
 
- Tính từ ngày 1/10/2023 đến ngày 30/9/2024, toàn quốc đã xảy ra 3.922 vụ cháy, gây thiệt hại tài sản ước tính khoảng 460 tỉ đồng. Trong đó, có tới 1.638 vụ hỏa hoạn xảy ra tại loại hình nhà ở riêng lẻ, kết hợp kinh doanh.
+* Ví dụ điển hình: Một vụ cháy lớn từng xảy ra tại khu văn phòng của một công ty liên doanh cáp điện ở Hải Phòng vào đúng ngày nghỉ. Do không có nhân viên làm việc và hệ thống chỉ báo động tại chỗ, đám cháy nghi do chập điện đã âm ỉ và lan rộng, thiêu rụi toàn bộ tài liệu, hồ sơ và hệ thống máy móc, máy tính trong văn phòng trước khi lực lượng cứu hỏa nhận được tin báo.
 
- Thống kê 6 tháng đầu năm 2025 cho thấy toàn quốc xảy ra 1.723 vụ cháy, trong đó nhà dân tiếp tục là nhóm có tỷ lệ cháy cao nhất với 36,3%. Đáng chú ý, 74,6% nguyên nhân các vụ cháy đã được làm rõ xuất phát từ sự cố hệ thống và thiết bị điện.
+- Vấn đề cốt lõi :
 
- Ví dụ điển hình: Vụ cháy đặc biệt nghiêm trọng tại khu nhà trọ ở phố Trung Kính (Hà Nội) vào rạng sáng ngày 24/05/2024 đã khiến 14 người tử vong và 3 người bị thương.
+* Cảnh báo cháy không linh hoạt: Cảnh báo tại chỗ như thông thường sẽ không thông báo đến được Chủ doanh nghiệp
 
-* Vấn đề cốt lõi : Các hệ thống báo cháy truyền thống hiện nay đa số chỉ phát tín hiệu âm thanh tại chỗ. Khi đám cháy bùng phát lúc đêm khuya hoặc khi chủ nhà đi vắng, thời gian vàng để dập lửa bị bỏ lỡ. Thêm vào đó, tâm lý lo sợ báo động giả khiến nhiều người ngắt thiết bị, dẫn đến không có biện pháp xử lý kịp thời khi hỏa hoạn thực sự xảy ra.
+* Khủng hoảng ngoài giờ làm việc: Sự cố chập điện thường bùng phát vào ban đêm hoặc ngày nghỉ cuối tuần khi không có nhân viên trực. Hệ thống báo cháy truyền thống (chỉ hú còi tại chỗ) trở nên vô dụng vì không ai nghe thấy để dập lửa ngay từ những giây đầu tiên.
 
 ---
 
-## 3. Mục tiêu cần đạt 
+## 3. Mục tiêu cần đạt
 
-* Giám sát và cảnh báo từ xa : Hệ thống phải theo dõi liên tục các thông số môi trường (khói, lửa, nhiệt độ) và gửi thông báo khẩn cấp đến điện thoại của người dùng qua ứng dụng chỉ trong vài giây kể từ khi phát hiện dấu hiệu bất thường.
+- Đối tượng hướng đến:
 
-* Hạn chế tối đa báo động giả : Kết hợp phân tích chéo dữ liệu từ đa cảm biến (Cảm biến khói, cảm biến lửa, cảm biến nhiệt độ - độ ẩm) để xác định chính xác sự cố cháy, khắc phục tình trạng báo động sai do khói nấu ăn hoặc sinh hoạt hàng ngày.
+* Người mua : Giám đốc doanh nghiệp
 
-* Tự động hóa chữa cháy tại chỗ : Tự động kích hoạt cơ cấu chấp hành (máy bơm nước mini, vòi phun sương) ngay sau khi xác nhận có hỏa hoạn, giúp kiểm soát đám cháy trong "thời điểm vàng" trước khi lực lượng cứu hỏa chuyên nghiệp có mặt.
+* Người sử dụng thiết bị : Nhân viên công ty
 
-** Trao quyền kiểm soát cho người dùng: Tích hợp tính năng cho phép người dùng linh hoạt bật hoặc tắt máy bơm thủ công từ xa thông qua điện thoại, giúp phòng ngừa trường hợp hệ thống xả nước nhầm gây hư hỏng đồ đạc, tài sản. **
+- Mục tiêu giải pháp hệ thống cần đạt:
+
+* Cảnh báo đa kênh : Hệ thống phải lập tức gửi cảnh báo (Notification, SMS, Cuộc gọi tự động) đến điện thoại của IT Manager và tổ bảo vệ, dù họ đang ở nhà.
+
+* Kiểm soát và Phân quyền thông minh qua App: Cung cấp cho bộ phận IT giao diện giám sát nhiệt độ/độ ẩm theo thời gian thực. Bắt buộc có chức năng "Xác nhận báo động" trên App: Cho phép người quản lý có khoảng 10-15 giây để xác nhận qua camera hoặc nhờ bảo vệ kiểm tra, từ đó có thể chủ động tắt/hủy lệnh xả khí từ điện thoại nếu đó là báo giả, tránh lãng phí chi phí nạp lại bình khí đắt tiền. *
 
 ---
 
@@ -545,20 +549,6 @@ Hệ thống hoàn chỉnh cần có khả năng:
 * Gửi dữ liệu lên hệ thống giám sát.
 * Nhận lệnh điều khiển từ Node-RED.
 * Hoạt động theo kiến trúc module hóa.
-
----
-
-# 16. Trạng thái phát triển
-
-| Module                 | Trạng thái         |
-| ---------------------- | ------------------ |
-| Sensors                | 🔄 Đang phát triển |
-| Actuators              | 🔄 Đang phát triển |
-| Communication          | 🔄 Đang phát triển |
-| Camera AI              | 🆕 Mới thêm        |
-| Main                   | 🔄 Đang phát triển |
-| Node-RED               | ⏳ Chưa hoàn thiện  |
-| Tích hợp toàn hệ thống | ⏳ Chưa hoàn thành  |
 
 ---
 
