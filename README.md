@@ -16,22 +16,35 @@ Các module chính của hệ thống:
 
 ---
 
-# 2. Mục tiêu của dự án
+## 2. Vấn đề và Bối cảnh 
 
-Hệ thống hướng tới các chức năng:
+* Bối cảnh chung: Thực trạng cháy nổ tại các khu nhà trọ, nhà ở riêng lẻ kết hợp kinh doanh đang diễn biến vô cùng phức tạp, phần lớn là hệ quả của yếu tố "làng lên phố" và những bất cập trong quy hoạch nhà ở vừa ở vừa kinh doanh tại các khu dân cư đông đúc.
 
-1. Thu thập dữ liệu từ các cảm biến.
-2. Giám sát các thông số môi trường.
-3. Sử dụng Camera AI để phát hiện/nhận diện tình trạng cháy hoặc các đối tượng cần giám sát.
-4. Xử lý dữ liệu từ cảm biến và Camera AI.
-5. Điều khiển các thiết bị chấp hành khi phát hiện tình trạng bất thường.
-6. Truyền dữ liệu và trạng thái hệ thống thông qua module communication.
-7. Có khả năng mở rộng thêm cảm biến, thiết bị và thuật toán AI trong tương lai.
-8. Thiết kế chương trình theo dạng module để thuận tiện cho việc phát triển nhóm.
+* Số liệu thực tế:
+
+ Tính từ ngày 1/10/2023 đến ngày 30/9/2024, toàn quốc đã xảy ra 3.922 vụ cháy, gây thiệt hại tài sản ước tính khoảng 460 tỉ đồng. Trong đó, có tới 1.638 vụ hỏa hoạn xảy ra tại loại hình nhà ở riêng lẻ, kết hợp kinh doanh.
+
+ Thống kê 6 tháng đầu năm 2025 cho thấy toàn quốc xảy ra 1.723 vụ cháy, trong đó nhà dân tiếp tục là nhóm có tỷ lệ cháy cao nhất với 36,3%. Đáng chú ý, 74,6% nguyên nhân các vụ cháy đã được làm rõ xuất phát từ sự cố hệ thống và thiết bị điện.
+
+ Ví dụ điển hình: Vụ cháy đặc biệt nghiêm trọng tại khu nhà trọ ở phố Trung Kính (Hà Nội) vào rạng sáng ngày 24/05/2024 đã khiến 14 người tử vong và 3 người bị thương.
+
+* Vấn đề cốt lõi : Các hệ thống báo cháy truyền thống hiện nay đa số chỉ phát tín hiệu âm thanh tại chỗ. Khi đám cháy bùng phát lúc đêm khuya hoặc khi chủ nhà đi vắng, thời gian vàng để dập lửa bị bỏ lỡ. Thêm vào đó, tâm lý lo sợ báo động giả khiến nhiều người ngắt thiết bị, dẫn đến không có biện pháp xử lý kịp thời khi hỏa hoạn thực sự xảy ra.
 
 ---
 
-# 3. Kiến trúc tổng thể
+## 3. Mục tiêu cần đạt 
+
+* Giám sát và cảnh báo từ xa : Hệ thống phải theo dõi liên tục các thông số môi trường (khói, lửa, nhiệt độ) và gửi thông báo khẩn cấp đến điện thoại của người dùng qua ứng dụng chỉ trong vài giây kể từ khi phát hiện dấu hiệu bất thường.
+
+* Hạn chế tối đa báo động giả : Kết hợp phân tích chéo dữ liệu từ đa cảm biến (Cảm biến khói, cảm biến lửa, cảm biến nhiệt độ - độ ẩm) để xác định chính xác sự cố cháy, khắc phục tình trạng báo động sai do khói nấu ăn hoặc sinh hoạt hàng ngày.
+
+* Tự động hóa chữa cháy tại chỗ : Tự động kích hoạt cơ cấu chấp hành (máy bơm nước mini, vòi phun sương) ngay sau khi xác nhận có hỏa hoạn, giúp kiểm soát đám cháy trong "thời điểm vàng" trước khi lực lượng cứu hỏa chuyên nghiệp có mặt.
+
+** Trao quyền kiểm soát cho người dùng: Tích hợp tính năng cho phép người dùng linh hoạt bật hoặc tắt máy bơm thủ công từ xa thông qua điện thoại, giúp phòng ngừa trường hợp hệ thống xả nước nhầm gây hư hỏng đồ đạc, tài sản. **
+
+---
+
+# 4. Kiến trúc tổng thể
 
 ```text
                     ┌─────────────────────┐
@@ -78,7 +91,7 @@ Hệ thống hướng tới các chức năng:
 
 ---
 
-# 4. Cấu trúc thư mục
+# 5. Cấu trúc thư mục
 
 Cấu trúc hiện tại của project:
 
@@ -109,9 +122,9 @@ He-Thong-Chua-Chay-Thong-Minh/
 
 ---
 
-# 5. Chức năng của từng module
+# 6. Chức năng của từng module
 
-## 5.1. Sensors
+## 6.1. Sensors
 
 Thư mục:
 
@@ -140,7 +153,7 @@ Module cảm biến **không nên xử lý logic hệ thống hoặc MQTT**.
 
 ---
 
-# 6. Actuators
+# 7. Actuators
 
 Thư mục:
 
@@ -167,7 +180,7 @@ Ví dụ:
 
 ---
 
-# 7. Communication
+# 8. Communication
 
 Thư mục:
 
@@ -214,7 +227,7 @@ Actuators
 
 ---
 
-# 8. Camera AI
+# 9. Camera AI
 
 Thư mục mới:
 
@@ -257,7 +270,7 @@ Module Camera AI có thể được phát triển để:
 
 ---
 
-# 9. Main.c
+# 10. Main.c
 
 File:
 
@@ -295,7 +308,7 @@ main.c
 
 ---
 
-# 10. Luồng hoạt động chính
+# 11. Luồng hoạt động chính
 
 ## Khi hệ thống khởi động
 
@@ -354,7 +367,7 @@ Main Loop
 
 ---
 
-# 11. Logic phát hiện cháy dự kiến
+# 12. Logic phát hiện cháy dự kiến
 
 Hệ thống có thể kết hợp nhiều nguồn dữ liệu để tăng độ chính xác.
 
@@ -403,7 +416,7 @@ Việc quyết định có cháy hay không nên được xử lý ở `main.c`,
 
 ---
 
-# 12. Công việc cần thực hiện
+# 13. Công việc cần thực hiện
 
 ## Sensors
 
@@ -465,7 +478,7 @@ Việc quyết định có cháy hay không nên được xử lý ở `main.c`,
 
 ---
 
-# 13. Nguyên tắc phát triển module
+# 14. Nguyên tắc phát triển module
 
 Mỗi module phải có trách nhiệm riêng:
 
@@ -519,7 +532,7 @@ Camera AI ──┤
 
 ---
 
-# 14. Mục tiêu cuối cùng
+# 15. Mục tiêu cuối cùng
 
 Hệ thống hoàn chỉnh cần có khả năng:
 
@@ -535,7 +548,7 @@ Hệ thống hoàn chỉnh cần có khả năng:
 
 ---
 
-# 15. Trạng thái phát triển
+# 16. Trạng thái phát triển
 
 | Module                 | Trạng thái         |
 | ---------------------- | ------------------ |
@@ -549,7 +562,7 @@ Hệ thống hoàn chỉnh cần có khả năng:
 
 ---
 
-# 16. Lưu ý
+# 17. Lưu ý
 
 Module `camera_ai` hiện là **khung phát triển**.
 
@@ -567,7 +580,7 @@ Sau khi xác định các thông tin trên, module `camera_ai` sẽ được tri
 
 ---
 
-## 17. Mục tiêu kiến trúc
+## 18. Mục tiêu kiến trúc
 
 ```text
                 SMART FIRE SYSTEM
