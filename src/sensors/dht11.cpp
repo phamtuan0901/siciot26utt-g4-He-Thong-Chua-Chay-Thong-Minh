@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <DHT.h>
-
 #include "config.h"
 #include "sensor.h"
 
