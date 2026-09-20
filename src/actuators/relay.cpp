@@ -1,5 +1,9 @@
 #include <Arduino.h>
+<<<<<<< HEAD
 #include "../config/config.h"
+=======
+#include "config.h"
+>>>>>>> 5a27bb5f4ca3a0af90cb0ed49142c28bbe9d02e8
 #include "relay.h"
 
 void initRelay() {

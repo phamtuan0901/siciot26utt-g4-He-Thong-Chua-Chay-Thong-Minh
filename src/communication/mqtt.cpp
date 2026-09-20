@@ -1,7 +1,11 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
+<<<<<<< HEAD
 #include "mqtt.h"
+=======
+#include "mqtt_manager.h"
+>>>>>>> 5a27bb5f4ca3a0af90cb0ed49142c28bbe9d02e8
 
 const char* MQTT_SERVER = "172.20.10.3";
 const int MQTT_PORT = 1883;

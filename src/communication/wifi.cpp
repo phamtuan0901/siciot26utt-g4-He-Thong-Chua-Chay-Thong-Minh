@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "wifi.h"
+=======
+#include "wifi_manager.h"
+>>>>>>> 5a27bb5f4ca3a0af90cb0ed49142c28bbe9d02e8
 
 const char* WIFI_SSID = "TEN_WIFI";
 const char* WIFI_PASSWORD = "MAT_KHAU_WIFI";
