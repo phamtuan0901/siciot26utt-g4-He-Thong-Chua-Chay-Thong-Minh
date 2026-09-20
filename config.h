@@ -10,8 +10,8 @@
 #define DHT_TYPE DHT11
 
 // Nhiệt độ
-#define FIRE_TEMP 32.0
-#define SAFE_TEMP 29.0
+#define FIRE_TEMP 28.0
+#define SAFE_TEMP 26.0
 
 // Servo
 #define FIRE_ANGLE 120
