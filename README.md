@@ -70,7 +70,7 @@ Các module chính của hệ thống:
                                │
                                ▼
                     ┌─────────────────────┐
-                    │       MAIN.C        │
+                    │       main.cpp      │
                     │                     │
                     │ System Logic        │
                     │ Decision Making     │
