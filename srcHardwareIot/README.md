@@ -1,135 +1,106 @@
-# AI Fire & Smoke Detection
-
-Module AI sử dụng **YOLO** để phát hiện **lửa (Fire)** và **khói (Smoke)** từ camera trong hệ thống Chữa Cháy Thông Minh. Kết quả nhận diện được gửi qua **MQTT** để kết hợp với dữ liệu từ ESP32 và các cảm biến khác.
-
-## Chức năng
-
-- Nhận hình ảnh từ camera theo thời gian thực.
-- Phát hiện lửa và khói bằng mô hình YOLO.
-- Hiển thị kết quả nhận diện trực tiếp trên camera.
-- Xử lý confidence của kết quả detection.
-- Gửi trạng thái phát hiện qua MQTT.
-- Tích hợp với MQTT Broker, Node-RED và các module khác của hệ thống.
-
-## Công nghệ
-
-- Python 3.10+
-- Ultralytics YOLO
-- OpenCV
-- Paho MQTT
-- NumPy
-- MQTT
-
-## Cấu trúc
-
-```text
-srcAiDetectFire/
-├── best.pt
-├── config.py
-├── detector.py
-├── main.py
-├── mqtt_handler.py
+srcHardwareIot/
+├── include/
+│   ├── communication/
+│   │   ├── mqtt.h
+│   │   └── wifi.h
+│   ├── sensors/
+│   │   └── sensor_task.h
+│   ├── service/
+│   │   └── fire_logic.h
+│   ├── actuators/
+│   │   ├── relay.h
+│   │   └── servo.h
+│   └── config.h
+├── src/
+│   ├── communication/
+│   │   ├── mqtt.cpp
+│   │   └── wifi.cpp
+│   ├── sensors/
+│   │   └── sensor_task.cpp
+│   ├── service/
+│   │   └── fire_logic.cpp
+│   ├── actuators/
+│   │   ├── relay.cpp
+│   │   └── servo.cpp
+│   └── main.cpp
+├── platformio.ini
 └── README.md
 
-Công nghệ sử dụng
-Python 3.10+
-Ultralytics YOLO
-OpenCV
-Paho MQTT
-NumPy
-MQTT
+### Thành phần chính
 
-Cài đặt
-Cài đặt các thư viện cần thiết:
+- **`include/config.h`**: Chứa các cấu hình phần cứng, chân GPIO, ngưỡng cảnh báo và các thông số của hệ thống.
 
-pip install ultralytics opencv-python paho-mqtt numpy
-Cấu hình
+- **`include/communication/`**: Chứa các module giao tiếp mạng.
+  - `wifi.h`: Khởi tạo và quản lý kết nối WiFi.
+  - `mqtt.h`: Kết nối MQTT, publish dữ liệu cảm biến và nhận lệnh từ MQTT Broker.
 
-Các thông số kết nối được cấu hình trong config.py.
+- **`include/sensors/`**: Xử lý các cảm biến của hệ thống.
+  - `sensor_task.h`: Đọc dữ liệu từ DHT11, MQ-2 và cảm biến ngọn lửa.
 
-Ví dụ:
+- **`include/service/`**: Chứa logic phát hiện cháy.
+  - `fire_logic.h`: Phân tích dữ liệu cảm biến và xác định trạng thái `NORMAL`, `WARNING` hoặc `FIRE`.
 
-MQTT_BROKER = "172.20.10.5"
-MQTT_PORT = 1883
-CAMERA_INDEX = 0
-CONFIDENCE_THRESHOLD = 0.5
+- **`include/actuators/`**: Điều khiển các thiết bị đầu ra.
+  - `relay.h`: Điều khiển relay và máy bơm.
+  - `servo.h`: Điều khiển servo định hướng vòi phun.
 
-Trong đó:
+- **`src/`**: Chứa phần implementation tương ứng với các module trong `include/`.
 
-MQTT_BROKER: Địa chỉ MQTT Broker.
-MQTT_PORT: Port MQTT.
-CAMERA_INDEX: Camera sử dụng để nhận diện.
-CONFIDENCE_THRESHOLD: Ngưỡng confidence của YOLO.
-Chạy chương trình
+- **`main.cpp`**: File khởi chạy chính của ESP32, khởi tạo các module và thực hiện vòng lặp chính của hệ thống.
 
-Di chuyển vào thư mục:
+- **`platformio.ini`**: Cấu hình PlatformIO cho board ESP32 và các thư viện được sử dụng.
 
-cd srcAiDetectFire
+### Phần cứng
 
-Sau đó chạy:
+Hệ thống sử dụng ESP32 làm bộ điều khiển trung tâm và kết nối với các thiết bị:
 
-python main.py
+- ESP32
+- DHT11
+- MQ-2
+- Flame Sensor
+- Servo Motor
+- Relay
+- Máy bơm
+- Buzzer / LED cảnh báo
 
-Chương trình sẽ mở camera và thực hiện nhận diện lửa/khói theo thời gian thực.
+### Chức năng
 
-Luồng xử lý
-Camera
-   │
-   ▼
-OpenCV
-   │
-   ▼
-YOLO Model
-   │
-   ├── Fire
-   ├── Smoke
-   └── No Detection
-   │
-   ▼
-Detection Result
-   │
-   ▼
-MQTT Handler
-   │
-   ▼
-MQTT Broker
-   │
-   ├── Node-RED
-   └── Backend
-Tích hợp với hệ thống
+ESP32 thực hiện:
 
-Module srcAiDetectFire đóng vai trò là nguồn dữ liệu AI trong hệ thống Chữa Cháy Thông Minh.
+- Đọc nhiệt độ và độ ẩm từ DHT11.
+- Đọc nồng độ khí từ MQ-2.
+- Phát hiện ngọn lửa bằng Flame Sensor.
+- Phân tích dữ liệu cảm biến để xác định trạng thái cháy.
+- Điều khiển servo theo trạng thái hệ thống.
+- Điều khiển relay và máy bơm khi phát hiện cháy.
+- Gửi dữ liệu cảm biến qua MQTT.
+- Nhận lệnh điều khiển từ MQTT Broker.
 
-Kết quả từ camera được kết hợp với dữ liệu từ các cảm biến:
+### Luồng hoạt động
 
-              ┌──────────────┐
-              │   Camera     │
-              └──────┬───────┘
-                     │
-                     ▼
-                YOLO AI
-                     │
-                Fire / Smoke
-                     │
-                     ▼
-                  MQTT
-                     │
-        ┌────────────┴────────────┐
-        │                         │
-        ▼                         ▼
-   Node-RED                    Backend
-        │                         │
-        └────────────┬────────────┘
-                     │
-                     ▼
-                Dashboard
-
-AI có thể cung cấp thêm thông tin cho logic phát hiện cháy cùng với:
-
-Nhiệt độ từ DHT11
-Độ ẩm từ DHT11
-Giá trị khí từ MQ-2
-Cảm biến ngọn lửa
-Kết quả nhận diện từ camera
-
-Việc kết hợp nhiều nguồn dữ liệu giúp hệ thống giảm phụ thuộc vào một cảm biến duy nhất và hạn chế cảnh báo sai.
+```text
+DHT11 ────────┐
+MQ-2 ─────────┤
+Flame Sensor ─┤
+              ▼
+           ESP32
+              │
+              ▼
+        Fire Detection
+              │
+       ┌──────┼──────┐
+       ▼      ▼      ▼
+    NORMAL WARNING  FIRE
+       │      │      │
+       │      │      ├── Servo
+       │      │      ├── Relay
+       │      │      └── Pump
+       │      │
+       └──────┴──────────► MQTT
+                              │
+                              ▼
+                         MQTT Broker
+                              │
+                    ┌─────────┴─────────┐
+                    ▼                   ▼
+                 Node-RED           Backend
