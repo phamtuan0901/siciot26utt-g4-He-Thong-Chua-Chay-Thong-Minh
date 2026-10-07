@@ -1,19 +1,18 @@
-<<<<<<< HEAD
-// #include <Arduino.h>
-// #include <DHT.h>
-// #include "config.h"
-// #include "sensor.h"
+#include <Arduino.h>
+#include <DHT.h>
+#include "../config/config.h"
+#include "../sensors/dht11.h"
 
-// DHT dht(DHT_PIN, DHT_TYPE);
+DHT dht(DHT_PIN, DHT_TYPE);
 
-// float temp = 0;
-// float humidity = 0;
+float temp = 0;
+float humidity = 0;
 
-// bool fireCheck = false;
+bool fireCheck = false;
 
-// void initSensor() {
-//   dht.begin();
-// }
+void initDHT11() {
+  dht.begin();
+}
 
 // void sensorTask(void *param) {
 
@@ -26,70 +25,25 @@
 
 //       Serial.println("Loi doc DHT11!");
 
-//     } else {
-
+//     } 
+//     else {
 //       Serial.print("Nhiet do: ");
 //       Serial.print(temp);
-
 //       Serial.print(" °C | Do am: ");
 //       Serial.print(humidity);
-
-//       Serial.println(" %");
-//       if (temp >= FIRE_TEMP) {
-//         fireCheck = true;
-//       }
-//       else if (temp < SAFE_TEMP) {
-//         fireCheck = false;
-//       }
+//         Serial.println(" %");
+      
 //     }
 //     vTaskDelay(pdMS_TO_TICKS(2000));
 //   }
 // }
-=======
-#include <Arduino.h>
-#include <DHT.h>
-#include "config.h"
-#include "sensor.h"
 
-DHT dht(DHT_PIN, DHT_TYPE);
-
-float temp = 0;
-float humidity = 0;
-
-bool fireCheck = false;
-
-void initSensor() {
-  dht.begin();
-}
-
-void sensorTask(void *param) {
-
-  while (true) {
-
-    temp = dht.readTemperature();
+bool readDHT11(float& temperature, float& humidity){
+    temperature = dht.readTemperature();
     humidity = dht.readHumidity();
 
-    if (isnan(temp) || isnan(humidity)) {
-
-      Serial.println("Loi doc DHT11!");
-
-    } else {
-
-      Serial.print("Nhiet do: ");
-      Serial.print(temp);
-
-      Serial.print(" °C | Do am: ");
-      Serial.print(humidity);
-
-      Serial.println(" %");
-      if (temp >= FIRE_TEMP) {
-        fireCheck = true;
-      }
-      else if (temp < SAFE_TEMP) {
-        fireCheck = false;
-      }
+    if(isnan(temperature) || isnan(humidity)){
+      return false;
     }
-    vTaskDelay(pdMS_TO_TICKS(2000));
-  }
+    return true;
 }
->>>>>>> 5a27bb5f4ca3a0af90cb0ed49142c28bbe9d02e8

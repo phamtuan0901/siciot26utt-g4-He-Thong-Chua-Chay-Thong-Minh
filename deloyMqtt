@@ -1,0 +1,2 @@
+"C:\Program Files\Mosquitto\mosquitto.exe" -c C:\mosquitto-test.conf -v
+netstat -ano | findstr :1883: test port

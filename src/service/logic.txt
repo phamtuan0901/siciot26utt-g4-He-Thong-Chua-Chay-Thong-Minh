@@ -1,0 +1,6 @@
+1.  Camera phát hiện lửa + nhiệt độ thực sự cao
+2.  Camera phát hiện lửa + khí gas vượt ngưỡng cháy
+3.  Camera phát hiện lửa + flame sensor + môi trường bắt đầu bất thường
+4.  Flame + nhiệt độ rất cao
+5.  Flame + khí gas rất cao
+6.  Nhiệt độ rất cao + khí gas rất cao

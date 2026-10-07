@@ -2,7 +2,7 @@
 #define SERVO_H
 
 void initServo();
-void moveToFirePosition();
+void moveToFirePosition(float angle);
 void moveToHomePosition();
 
 #endif
