@@ -1,0 +1,14 @@
+MODEL_PATH = "best.pt"
+
+CAMERA_WIDTH = 640
+CAMERA_HEIGHT = 480
+CONFIDENCE = 0.5
+
+# Góc servo thực tế
+SERVO_MIN_ANGLE = 0
+SERVO_MAX_ANGLE = 360
+
+# MQTT
+MQTT_BROKER = "172.20.10.5"
+MQTT_PORT = 1883
+MQTT_TOPIC = "hethongchuachaythongminh/gr04/camera"
