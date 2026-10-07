@@ -1,11 +1,11 @@
-#include "wifi_manager.h"
+#include "wifi.h"
 
-const char* WIFI_SSID = "TEN_WIFI";
-const char* WIFI_PASSWORD = "MAT_KHAU_WIFI";
 
-void wifi_init()
-{
-    Serial.println("Connecting to WiFi...");
+const char* WIFI_SSID = "s";
+const char* WIFI_PASSWORD = "11111111";
+
+void wifi_init(){
+    Serial.println("Ket noi toi  WiFi...");
 
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
@@ -16,8 +16,8 @@ void wifi_init()
     }
 
     Serial.println();
-    Serial.println("WiFi connected!");
-    Serial.print("IP address: ");
+    Serial.println("WiFi da ket noi!");
+    Serial.print("Dia chi iP: ");
     Serial.println(WiFi.localIP());
 }
 
@@ -25,7 +25,7 @@ void wifi_check()
 {
     if (WiFi.status() != WL_CONNECTED)
     {
-        Serial.println("WiFi disconnected!");
+        Serial.println("WiFi khong ket noi!");
         WiFi.reconnect();
     }
 }

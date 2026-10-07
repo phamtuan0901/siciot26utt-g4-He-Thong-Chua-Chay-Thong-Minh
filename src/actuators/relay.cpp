@@ -1,8 +1,9 @@
 #include <Arduino.h>
-#include "config.h"
-#include "relay.h"
+#include "../config/config.h"
+
 
 void initRelay() {
+  Serial.println("Relay khoi dong");
   pinMode(RELAY_IN2, OUTPUT);
   digitalWrite(RELAY_IN2, LOW);
 }
